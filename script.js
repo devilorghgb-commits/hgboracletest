@@ -527,9 +527,12 @@
       ctx.fillStyle = '#fff'; ctx.fillText(l, W / 2, y);
     });
 
-    // rodapé: mantém apenas a assinatura do artista, sem o título repetido
-    ctx.fillStyle = '#7d7d7d'; ctx.font = `italic 26px ${serif}`;
-    ctx.fillText('hellsing glock boyz', W / 2, 1888);
+    // rodapé: assinatura do artista + URL
+    ctx.textAlign = 'center'; ctx.fillStyle = '#7d7d7d';
+    ctx.font = `italic 26px ${serif}`;
+    ctx.fillText('hellsing glock boyz', W / 2, 1858);
+    ctx.font = `italic 30px ${serif}`; // +4 px
+    ctx.fillText('vampiresarereal.online', W / 2, 1905);
 
     for (let i = 0; i < 26000; i++) { ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.06})`; ctx.fillRect(Math.random() * W, Math.random() * H, 2, 2); }
     return c.toDataURL('image/png');
