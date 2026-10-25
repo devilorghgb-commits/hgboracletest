@@ -1,20 +1,16 @@
-/* 7.0.1: LATE NIGHT CONFESSION — 8 ball
-   Respostas em ANSWERS (curtas: precisam caber na janela da bola). */
 (() => {
   'use strict';
 
   const CONFIG = {
-    promoChance: 0.12, // chance de sair uma resposta que cita o álbum
     shakeMs: 1100,
   };
 
   const ANSWERS = {
-    yes: ['sim.', 'yessir.', 'pode crer.', 'é certo.', 'você já sabe.', 'sempre foi sim.', 'ninguém vai saber.', 'tá feito.', 'vai.'],
-    no: ['não.', 'nem.', 'tarde demais.', 'hoje não.', 'ninguém vem.', 'você sabe a resposta.', 'wtf 🤣 hell no.', 'tá viajando.', 'nah.', 'sem chance.'],
-    maybe: ['pergunta às 3 da manhã.', 'silêncio.', 'ainda não.', 'as vozes decidem.', 'não sei. tá escuro.'],
-    promo: ['Vampires are real.', 'pergunta à meia-noite.'],
+    yes: ['sim.', 'yessir.', 'é certo.', 'sempre foi sim.'],
+    no: ['não.', 'hoje não.', 'você sabe a resposta.', 'nah.', 'sem chance.'],
+    maybe: ['(silêncio)', 'ainda não.', 'pergunte depois.', 'é uma possibilidade.'],
   };
-  const PLACEHOLDERS = ['confess.', 'what are you hiding.', 'who do you miss.', 'say it.', 'ask the dark.'];
+  const PLACEHOLDERS = ['Confess.', 'what are you hiding?', 'ask the vamp.'];
 
   const $ = (id) => document.getElementById(id);
   const el = {
@@ -397,7 +393,7 @@
   }
 
   function pickAnswer() {
-    const pool = Math.random() < CONFIG.promoChance ? ANSWERS.promo : [].concat(ANSWERS.yes, ANSWERS.no, ANSWERS.maybe);
+    const pool = [].concat(ANSWERS.yes, ANSWERS.no, ANSWERS.maybe);
     let a, guard = 0;
     do { a = pool[rand(pool.length)]; guard++; } while (a === lastAnswer && guard < 8);
     lastAnswer = a;
